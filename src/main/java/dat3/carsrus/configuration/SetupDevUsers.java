@@ -23,14 +23,16 @@ public class SetupDevUsers implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         Member mem1 = new Member("admin", "admin", "admin@admin.dk", "Lasse",
                 "Rasmussen", "test avenue", "Hvidovre", 2650, true, Role.ADMIN );
+
         Member mem2 = new Member("bruger", "bruger123", "bruger@user.dk", "David",
-                "Davidson", "Street", "Herlev", 2600, false, Role.ADMIN );
+                "Davidson", "Street", "Herlev", 2600, false, Role.USER );
+
         memberRepository.save(mem1);
         memberRepository.save(mem2);
     }
 
     /*****************************************************************************************
-     Jeg har slettet den eksisterende metode som oprettede brugere her klassen og lavet en simpel
+     Jeg har slettet den eksisterende metode som oprettede brugere her i klassen og lavet en simpel
      rettelse i "run" metoden som opretter 2 typer brugere, en ADMIN og en USER.
      *****************************************************************************************/
 }
