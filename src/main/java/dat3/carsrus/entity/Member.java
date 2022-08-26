@@ -2,8 +2,6 @@ package dat3.carsrus.entity;
 
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
