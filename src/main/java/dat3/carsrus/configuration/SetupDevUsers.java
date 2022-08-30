@@ -21,11 +21,21 @@ public class SetupDevUsers implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        Member mem1 = new Member("admin", "admin", "admin@admin.dk", "Lasse",
-                "Rasmussen", "test avenue", "Hvidovre", 2650, true, Role.ADMIN );
+        Member mem1 = new Member(
+                "admin",
+                "admin",
+                "admin@admin.dk",
+                "Lasse",
+                "Rasmussen",
+                "test avenue",
+                "Hvidovre",
+                "2650",
+                true,
+                Role.ADMIN
+        );
 
-        Member mem2 = new Member("bruger", "bruger123", "bruger@user.dk", "David",
-                "Davidson", "Street", "Herlev", 2600, false, Role.USER );
+        Member mem2 = new Member("bruger", "bruger123", "bruger@user.dk", "Tester",
+                "Testersen", "Street", "Herlev", "2600", false, Role.USER);
 
         memberRepository.save(mem1);
         memberRepository.save(mem2);
