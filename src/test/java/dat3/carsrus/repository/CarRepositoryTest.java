@@ -19,7 +19,7 @@ class CarRepositoryTest {
 
     @BeforeAll
     public static void setupCars (@Autowired CarRepository carRepository) {
-
+        carRepository.deleteAll();
         Car car1 = new Car("audi", "a5", 4500, 500);
         Car car2 = new Car("kia", "proceed", 3500, 350);
         carRepository.save(car1);

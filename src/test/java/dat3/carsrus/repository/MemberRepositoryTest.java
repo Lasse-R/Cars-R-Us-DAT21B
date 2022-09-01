@@ -19,7 +19,7 @@ class MemberRepositoryTest {
 
     @BeforeAll
     public static void setupMember(@Autowired MemberRepository memberRepository) {
-
+        memberRepository.deleteAll();
         Member member1 = new Member("bruger", "kodeord", "test@123.dk", "John");
         Member member2 = new Member("user", "password", "123@test.dk", "Hillary");
 

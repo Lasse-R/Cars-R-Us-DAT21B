@@ -44,6 +44,10 @@ public class MemberService {
         return new MemberResponse(found,false);
     }
 
-
+    public List<MemberResponse> getMembers() {
+        List<Member> members = memberRepository.findAll();
+        List<MemberResponse> response = members.stream().map(member -> new MemberResponse(member,false)).collect(Collectors.toList());
+        return response;
+    }
 
 }
