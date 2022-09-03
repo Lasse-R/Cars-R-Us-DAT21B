@@ -23,7 +23,7 @@ public class MemberService {
 
     public List<MemberResponse> findMembers() {
         List<Member> members = memberRepository.findAll();
-        List<MemberResponse> response = members.stream().map(member -> new MemberResponse(member, false)).collect(Collectors.toList());
+        List<MemberResponse> response = members.stream().map(member -> new MemberResponse(member, true)).collect(Collectors.toList());
 
 
         return response;

@@ -44,6 +44,13 @@ public class Car{
         this.bestDiscount = bestDiscount;
     }
 
+    public Car(int id, String brand, String model, int pricePerDay, int bestDiscount) {
+        this.brand = brand;
+        this.model = model;
+        this.pricePerDay = pricePerDay;
+        this.bestDiscount = bestDiscount;
+    }
+
     public int getId() {
         return id;
     }
