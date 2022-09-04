@@ -35,9 +35,7 @@ public class MemberController {
     //@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @PostMapping // same as above when you are using @RestController
     MemberResponse addMember(@RequestBody MemberRequest body) {
-        MemberResponse res = memberService.addMember(body);
-        System.out.println("debugger");
-        return res;
+        return memberService.addMember(body);
     }
 
     //Security USER/ADMIN ???
