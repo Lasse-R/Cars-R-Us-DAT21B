@@ -2,10 +2,8 @@ package dat3.carsrus.service;
 
 import dat3.carsrus.dto.CarRequest;
 import dat3.carsrus.dto.CarResponse;
-import dat3.carsrus.dto.MemberResponse;
 import dat3.carsrus.entity.Car;
 
-import dat3.carsrus.entity.Member;
 import dat3.carsrus.repository.CarRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -25,7 +23,7 @@ public class CarService {
 
     public List<CarResponse> findCars (){
         List<Car> cars = carRepository.findAll();
-        List<CarResponse> response = cars.stream().map(car -> new CarResponse(car, false)).collect(Collectors.toList());
+        List<CarResponse> response = cars.stream().map(car -> new CarResponse(car, true)).collect(Collectors.toList());
         return response;
     }
 

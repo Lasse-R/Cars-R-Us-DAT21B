@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarResponse {
-    int id; //Remember this is the primary key
+    int id;
 
     String brand;
 
@@ -35,9 +35,9 @@ public class CarResponse {
         this.brand = c.getBrand();
         this.model = c.getModel();
         this.pricePerDay = c.getPricePerDay();
-        this.bestDiscount = c.getBestDiscount();
         if (includeAll) {
             this.id = c.getId();
+            this.bestDiscount = c.getBestDiscount();
             this.created = c.getTimeCreated();
             this.edited = c.getTimeEdited();
         }

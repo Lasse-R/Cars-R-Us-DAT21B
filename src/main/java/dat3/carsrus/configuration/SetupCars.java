@@ -1,3 +1,4 @@
+/*
 package dat3.carsrus.configuration;
 
 import dat3.carsrus.entity.Car;
@@ -30,4 +31,5 @@ public class SetupCars implements ApplicationRunner {
      bare til oprettelse af biler i stedet for. Har oprettet et par stykker og sikret mig at de
      bliver oprettet i databasen via Workbench. Unit Test incoming.
      *****************************************************************************************/
-}
+//}
+

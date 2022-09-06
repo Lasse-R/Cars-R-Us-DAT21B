@@ -1,12 +1,20 @@
 package dat3.carsrus.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+@NoArgsConstructor
 @Entity
+@Getter
+@Setter
 public class Car{
 
     @Id
@@ -33,8 +41,12 @@ public class Car{
     @Column(name = "edited")
     private LocalDateTime timeEdited;
 
-    public Car(){
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    private List<Reservation> reservations = new ArrayList<>();
 
+    public void addReservation (Reservation reservation){
+        reservations.add(reservation);
+        reservation.setCar(this);
     }
 
     public Car(String brand, String model, int pricePerDay, int bestDiscount) {
