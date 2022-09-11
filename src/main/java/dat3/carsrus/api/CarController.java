@@ -20,7 +20,12 @@ public class CarController {
     // Security ADMIN / USER with different levels of details
     @GetMapping
     List<CarResponse> findCars (){
-        return carService.findCars();
+        return carService.findCars(false);
+    }
+
+    @GetMapping("(/admin")
+    List<CarResponse> findCarsAdmin (){
+        return carService.findCars(true);
     }
 
     // Security ADMIN
@@ -34,5 +39,19 @@ public class CarController {
     CarResponse getCarById(@PathVariable int id) throws Exception {
         return carService.findCarById(id);
     }
+
+    //Admin
+    @PutMapping("/{carId}")
+    public void editCar(@RequestBody CarRequest body, @PathVariable int carId) {
+        carService.editCar(body, carId);
+    }
+
+    //Security ADMIN
+    @PatchMapping("/rentalprice/{carId}/{newPrice}")
+    public void setNewPrice(@PathVariable int carId, @PathVariable int newPrice) {
+        carService.setPricePrDay(carId, newPrice);
+    }
+
+
 
 }

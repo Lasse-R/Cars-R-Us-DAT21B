@@ -21,9 +21,9 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public List<CarResponse> findCars (){
+    public List<CarResponse> findCars (boolean includeAll){
         List<Car> cars = carRepository.findAll();
-        List<CarResponse> response = cars.stream().map(car -> new CarResponse(car, true)).collect(Collectors.toList());
+        List<CarResponse> response = cars.stream().map(car -> new CarResponse(car, includeAll)).collect(Collectors.toList());
         return response;
     }
 
@@ -38,6 +38,23 @@ public class CarService {
     public CarResponse findCarById(int id) throws Exception {
         Car found = carRepository.findById(id).orElseThrow(
                 ()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found"));
-        return new CarResponse(found,false);
+        return new CarResponse(found,true);
+    }
+
+    public void setPricePrDay(int carId, int price) {
+        Car car = carRepository.findById(carId).orElseThrow(()->
+                new ResponseStatusException(HttpStatus.BAD_REQUEST,"Member with this username already exist"));
+        car.setPricePerDay(price);
+        carRepository.save(car);
+    }
+
+    public void editCar(CarRequest body, int carId){
+        Car car = carRepository.findById(carId).orElseThrow(
+                ()->  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Car with this ID dont exist"));
+        car.setBrand(body.getBrand());
+        car.setModel(body.getModel());
+        car.setPricePerDay(body.getPricePerDay());
+        car.setBestDiscount(body.getBestDiscount());
+        carRepository.save(car);
     }
 }

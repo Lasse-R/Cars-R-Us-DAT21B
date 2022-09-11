@@ -1,5 +1,6 @@
 package dat3.carsrus.service;
 
+import dat3.carsrus.dto.ReservationResponse;
 import dat3.carsrus.entity.Car;
 import dat3.carsrus.entity.Member;
 import dat3.carsrus.entity.Reservation;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
@@ -37,6 +40,13 @@ public class ReservationService {
         }
             Reservation reservation = new Reservation(member, car, localDate);
             reservationRepository.save(reservation);
+    }
+
+    public List<ReservationResponse> getReservations(){
+        List<Reservation> reservations = reservationRepository.findAll();
+        List<ReservationResponse> response = reservations.stream().map(res-> new ReservationResponse(res)).collect(Collectors.toList());
+        return response;
+
     }
 
 }
